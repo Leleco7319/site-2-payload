@@ -166,7 +166,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
               version: 1,
             },
           },
-          size: 'full',
         },
         {
           enableLink: false,
@@ -251,7 +250,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
               version: 1,
             },
           },
-          size: 'oneThird',
         },
         {
           enableLink: false,
@@ -304,7 +302,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
               version: 1,
             },
           },
-          size: 'oneThird',
         },
         {
           enableLink: false,
@@ -357,7 +354,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
               version: 1,
             },
           },
-          size: 'oneThird',
         },
         {
           enableLink: false,
@@ -442,7 +438,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
               version: 1,
             },
           },
-          size: 'oneThird',
         },
         {
           enableLink: false,
@@ -495,7 +490,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
               version: 1,
             },
           },
-          size: 'oneThird',
         },
       ],
     },
@@ -504,7 +498,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
       blockType: 'mediaBlock',
       // @ts-ignore
       media: '{{IMAGE_2}}',
-      position: 'default',
     },
     {
       blockName: 'Archive Block',

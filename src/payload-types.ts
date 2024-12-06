@@ -311,7 +311,7 @@ export interface MediaBlock {
   media: string | Media;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'mediaBlock3';
+  blockType: 'mediaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
