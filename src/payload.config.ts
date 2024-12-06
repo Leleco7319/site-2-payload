@@ -64,7 +64,7 @@ export default buildConfig({
     url: process.env.DATABASE_URI || '',
   }),
   collections: [Pages, Posts, Media, Categories, Users, Contents],
-  cors: ["http://localhost", "http://localhost:3000", "http://localhost:3001"],
+  cors: ["http://localhost", "http://localhost:3000", "http://localhost:3000"],
   globals: [Header, Footer],
   plugins: [
     ...plugins,
