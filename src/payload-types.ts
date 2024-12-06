@@ -16,6 +16,7 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
+    contents: Content;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -31,6 +32,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    contents: ContentsSelect<false> | ContentsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -263,7 +265,6 @@ export interface CallToActionBlock {
 export interface ContentBlock {
   columns?:
     | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
         richText?: {
           root: {
             type: string;
@@ -294,6 +295,7 @@ export interface ContentBlock {
         id?: string | null;
       }[]
     | null;
+  media?: (string | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
@@ -303,11 +305,13 @@ export interface ContentBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
-  position?: ('default' | 'fullscreen') | null;
+  title?: string | null;
+  date?: string | null;
+  subtitle?: string | null;
   media: string | Media;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'mediaBlock';
+  blockType: 'mediaBlock3';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -615,6 +619,17 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contents".
+ */
+export interface Content {
+  id: string;
+  title?: string | null;
+  layout: (MediaBlock | ContentBlock)[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -707,6 +722,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: string | User;
+      } | null)
+    | ({
+        relationTo: 'contents';
+        value: string | Content;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -825,7 +844,6 @@ export interface PagesSelect<T extends boolean = true> {
               columns?:
                 | T
                 | {
-                    size?: T;
                     richText?: T;
                     enableLink?: T;
                     link?:
@@ -840,13 +858,15 @@ export interface PagesSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
+              media?: T;
               id?: T;
               blockName?: T;
             };
         mediaBlock?:
           | T
           | {
-              position?: T;
+              title?: T;
+              subtitle?: T;
               media?: T;
               id?: T;
               blockName?: T;
@@ -1037,6 +1057,72 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contents_select".
+ */
+export interface ContentsSelect<T extends boolean = true> {
+  title?: T;
+  layout?:
+    | T
+    | {
+        mediaBlock?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              media?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock2?:
+          | T
+          | {
+              testimonial?: T;
+              name?: T;
+              location?: T;
+              media?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock3?:
+          | T
+          | {
+              title?: T;
+              date?: T;
+              subtitle?: T;
+              media?: T;
+              id?: T;
+              blockName?: T;
+            };
+        content?:
+          | T
+          | {
+              columns?:
+                | T
+                | {
+                    richText?: T;
+                    enableLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
+              media?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

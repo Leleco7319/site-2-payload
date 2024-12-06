@@ -5,19 +5,12 @@ export const MediaBlock: Block = {
   interfaceName: 'MediaBlock',
   fields: [
     {
-      name: 'position',
-      type: 'select',
-      defaultValue: 'default',
-      options: [
-        {
-          label: 'Default',
-          value: 'default',
-        },
-        {
-          label: 'Fullscreen',
-          value: 'fullscreen',
-        },
-      ],
+      name: 'title',
+      type: 'text',
+    },
+    {
+      name: 'subtitle',
+      type: 'text',
     },
     {
       name: 'media',
